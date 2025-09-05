@@ -13,7 +13,7 @@ const HeroSection = ({ isLoaded }) => {
         
         <div className="relative inline-block">
           <h3 className="text-xl md:text-3xl py-2 text-gray-700 dark:text-gray-300 font-medium">
-            Software Developer
+            Software Developer/Data Scientist
           </h3>
           <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 transform scale-x-0 animate-pulse" style={{
             animation: 'scaleX 2s ease-out 1s forwards, pulse 2s infinite 3s'

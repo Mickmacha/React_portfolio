@@ -1,18 +1,14 @@
-"use client";
-import React, { useState, useEffect } from 'react';
+'use client'
+import React from 'react';
+import { useDarkMode } from './hooks/useDarkMode';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import Skills from './components/Skills';
 import CallToAction from './components/CallToAction';
 import BackgroundElements from './components/BackgroundElements';
 
-export default function Portfolio() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+export default function HomePage() {
+  const { darkMode, setDarkMode, isLoaded } = useDarkMode();
   
   return (
     <div className={darkMode ? 'dark' : ''}>
