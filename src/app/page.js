@@ -1,9 +1,10 @@
+"use client";
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import HeroSection from '../components/HeroSection';
-import Skills from '../components/Skills';
-import CallToAction from '../components/CallToAction';
-import BackgroundElements from '../components/BackgroundElements';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import Skills from './components/Skills';
+import CallToAction from './components/CallToAction';
+import BackgroundElements from './components/BackgroundElements';
 
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false);
