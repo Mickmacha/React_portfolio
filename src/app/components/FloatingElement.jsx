@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const FloatingElement = ({ children, delay = 0 }) => (

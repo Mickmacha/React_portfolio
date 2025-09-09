@@ -1,3 +1,4 @@
+"use client";
 // Skill card component for improving user interface
 import React, { useState, useEffect } from 'react';
 

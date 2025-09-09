@@ -1,6 +1,5 @@
 'use client'
-import React from 'react';
-import { useDarkMode } from './hooks/useDarkMode';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import Skills from './components/Skills';
@@ -8,7 +7,27 @@ import CallToAction from './components/CallToAction';
 import BackgroundElements from './components/BackgroundElements';
 
 export default function HomePage() {
-  const { darkMode, setDarkMode, isLoaded } = useDarkMode();
+  const [darkMode, setDarkMode] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  useEffect(() => {
+    setIsLoaded(true);
+    
+    // Check for saved dark mode preference or system preference
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode !== null) {
+      setDarkMode(JSON.parse(savedMode));
+    } else {
+      const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setDarkMode(systemPreference);
+    }
+  }, []);
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('darkMode', JSON.stringify(darkMode));
+    }
+  }, [darkMode]);
   
   return (
     <div className={darkMode ? 'dark' : ''}>
