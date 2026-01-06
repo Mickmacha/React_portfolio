@@ -1,49 +1,33 @@
 "use client";
-// Skill card component for improving user interface
+// Minimal, professional skill pill
 import React, { useState, useEffect } from 'react';
 
 const SkillCard = ({ skill, index }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [progress, setProgress] = useState(0);
-  
+
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), index * 100);
+    const timer = setTimeout(() => setIsVisible(true), index * 80);
     return () => clearTimeout(timer);
   }, [index]);
-  
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => setProgress(skill.level), 300);
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible, skill.level]);
-  
+
   const IconComponent = skill.icon;
-  
+
   return (
-    <div 
-      className={`group relative bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transform transition-all duration-500 hover:-translate-y-2 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+    <div
+      className={`group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-100 dark:border-gray-700 px-4 py-3 rounded-full shadow-sm hover:shadow-md transform transition-all duration-300 hover:-translate-y-1 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
       }`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-teal-600/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      
-      <div className="relative z-10 flex flex-col items-center space-y-4">
-        <div className="relative">
-          <IconComponent className={`text-5xl ${skill.color} transform group-hover:scale-110 transition-transform duration-300`} />
-          <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
-        </div>
-        
-        <h3 className="font-semibold text-gray-800 dark:text-white text-lg">{skill.name}</h3>
-        
-        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full transition-all duration-1000 ease-out"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-        
-        <span className="text-sm text-gray-600 dark:text-gray-400">{skill.level}%</span>
+      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/0 via-teal-500/5 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="relative z-10 flex items-center gap-3">
+        {IconComponent && (
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-cyan-50 dark:bg-cyan-900/40">
+            <IconComponent className={`text-xl ${skill.color || 'text-cyan-600 dark:text-cyan-400'}`} />
+          </span>
+        )}
+        <span className="text-sm font-medium text-gray-800 dark:text-gray-100">
+          {skill.name}
+        </span>
       </div>
     </div>
   );
