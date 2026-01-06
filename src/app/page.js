@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import AboutSection from './components/AboutSection';
 import Skills from './components/Skills';
 import CallToAction from './components/CallToAction';
 import BackgroundElements from './components/BackgroundElements';
@@ -38,6 +39,7 @@ export default function HomePage() {
         <main className="relative z-10 px-4 md:px-10">
           <Navbar darkMode={darkMode} setDarkMode={setDarkMode} isLoaded={isLoaded} />
           <HeroSection isLoaded={isLoaded} />
+          <AboutSection />
           <Skills />
           <CallToAction />
         </main>
@@ -47,6 +49,18 @@ export default function HomePage() {
             to {
               transform: scaleX(1);
             }
+          }
+          @keyframes gradient {
+            0%, 100% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+          }
+          .animate-gradient {
+            animation: gradient 3s ease infinite;
+            background-size: 200% auto;
           }
         `}</style>
       </div>
